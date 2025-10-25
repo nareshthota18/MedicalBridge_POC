@@ -27,9 +27,9 @@ const Forgot = () => {
         xs={0}
         sm={0}
         md={12}
-        lg={12}
-        xl={15}
-        xxl={15}
+        lg={14}
+        xl={14}
+        xxl={14}
         style={{
           backgroundColor: "#f0f4ff",
           display: "flex",
@@ -45,9 +45,9 @@ const Forgot = () => {
         xs={24}
         sm={24}
         md={12}
-        lg={12}
-        xl={9}
-        xxl={9}
+        lg={10}
+        xl={10}
+        xxl={10}
         style={{
           padding: "40px",
           display: "flex",

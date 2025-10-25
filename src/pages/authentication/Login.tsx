@@ -1,22 +1,26 @@
-import React from "react";
-import { Row, Col, Form, Input, Button, Typography, Flex } from "antd";
-import real from "../../assets/real-time.svg";
+import { Row, Col, Form, Input, Button, Typography, Flex, message } from "antd";
 import AuthLayout from "./AuthLayout";
+import { useNavigate } from "react-router-dom";
 
 const { Title, Text, Link } = Typography;
 
 const Login = () => {
+  const navigate = useNavigate();
   const onFinish = (values: any) => {
     console.log("Success:", values);
+    message.success("Login Successful!");
+    setTimeout(() => {
+      navigate("/dashboard"); // your admin route
+    }, 1000); // delay for smooth UX
   };
 
   return (
     <Row style={{ minHeight: "100vh" }}>
-      <Col xs={0} sm={0} md={12} lg={12} xl={15} xxl={15} style={{ backgroundColor: "#f0f4ff", display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}>
+      <Col xs={0} sm={0} md={12} lg={14} xl={14} xxl={14} style={{ backgroundColor: "#f0f4ff", display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}>
         <AuthLayout />
       </Col>
 
-      <Col xs={24} sm={24} md={12} lg={12} xl={9} xxl={9} style={{ padding: "40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <Col xs={24} sm={24} md={12} lg={10} xl={10} xxl={10} style={{ padding: "40px", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div style={{ width: "100%", maxWidth: "400px" }}>
           <Title level={2} style={{ marginBottom: 0}}>Welcome</Title>
           <Text type="secondary">Sign in to your account</Text>

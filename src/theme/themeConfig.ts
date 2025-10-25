@@ -10,10 +10,10 @@ export const lightTheme: ThemeConfig = {
   },
   components: {
     Layout: {
-      headerBg: '#878672',
-      footerBg: '#878672',
+      headerBg: '#5b201a',
+      footerBg: '#5b201a',
       footerPadding: '16px 50px',
-      headerPadding: '0 20px',
+      // headerPadding: '0 20px',
       },
     Menu: {
       // itemColor: '#ffffff',

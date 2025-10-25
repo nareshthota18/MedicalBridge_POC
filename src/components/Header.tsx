@@ -1,79 +1,47 @@
-import { Button, Drawer, Layout, Menu, Grid, Badge, Row, Col, Flex, Typography } from 'antd';
+import { Button, Layout, Grid, Badge, Avatar } from 'antd';
 import {
   BellOutlined,
-  MenuOutlined,
-  MoonOutlined,
-  SunOutlined,
+  LogoutOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import logo from '../assets/logo.png';
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import type { MenuProps } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
-const { Header, Content } = Layout;
+const { Header } = Layout;
 const { useBreakpoint } = Grid;
-// const { Title, Text } = Typography;
 
-type HeaderProps = {
-  darkMode: boolean;
-  toggleTheme: () => void;
-};
-
-const HeaderComponent = ({ darkMode, toggleTheme }: HeaderProps) => {
+const HeaderComponent = () => {
   const navigate = useNavigate();
-  const location = useLocation();
   const screens = useBreakpoint();
-  const [drawerVisible, setDrawerVisible] = useState(false);
 
   const isMobile = !screens.md;
 
-  const onClick: MenuProps['onClick'] = (e) => {
-    navigate(e.key);
-    setDrawerVisible(false);
-  };
-
-  const items: MenuProps['items'] = [
-    { key: '0', label: 'Dashboard' },
-    { key: '1', label: 'Admin' },
-    { key: '2', label: 'Employee', 
-      children: [
-        { label: 'Option 1', key: 'setting:1' },
-        { type: 'divider' },
-        { label: 'Option 2', key: 'setting:2' },
-      ],
-    },
-    { key: '3', label: 'Leave' },
-    { key: '4', label: 'Payroll' },
-    { key: '5', label: 'Attendance' },
-    { key: '6', label: 'Settings' },
-    { key: '7', label: 'Reports' },
-    { key: '8', label: 'Help' },
-  ];
-
   return (
-    <>
-    <Header style={{ display: 'flex', alignItems: 'center' }}>
+    <Header style={{ display: 'flex', alignItems: 'center', padding: '0 24px' }}>
       <img
         src={logo}
         alt="Logo"
-        style={{ height: 18, marginRight: 32, cursor: 'pointer' }}
-        onClick={() => navigate('/')}
+        style={{ height: 38, marginRight: 32, cursor: 'pointer' }}
+        onClick={() => navigate('/dashboard')}
       />
 
       <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 16 }}>
-        {/* Theme Toggle Button */}
-        <Badge count={5} style={{ fontSize: 10 }} size='small'>
-        <BellOutlined style={{ color: 'white' }} />
-        </Badge>
+      
+        {/* Profile Icon */}
+        <Avatar
+          icon={<UserOutlined />}
+          style={{ cursor: 'pointer' }}
+          onClick={() => navigate('/profile')}
+        />
+
+        {/* Logout Button */}
         <Button
           type="text"
-          icon={darkMode ? <SunOutlined style={{ color: 'white' }} /> : <MoonOutlined style={{ color: 'white' }} />}
-          onClick={toggleTheme}
-          style={{ fontSize: 14 }}
+          icon={<LogoutOutlined style={{ color: 'white', fontSize: 18 }} />}
+          onClick={() => navigate('/')}
         />
       </div>
     </Header>
-    </>
   );
 };
 
