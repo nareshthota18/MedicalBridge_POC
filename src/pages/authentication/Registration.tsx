@@ -1,25 +1,18 @@
-import { Row, Col, Form, Input, Button, Typography, Select } from "antd"
-import real from "../../assets/real-time.svg";
+import { Row, Col, Form, Input, Button, Typography, message } from "antd"
 import AuthLayout from "./AuthLayout";
+import { useNavigate } from "react-router-dom";
 const { Title, Text, Link } = Typography
 
-// const { Option } = Select;
-// const prefixSelector = (
-//   <Form.Item name="countryCode" noStyle initialValue="+91">
-//     <Select style={{ width: 90 }}>
-//       <Option value="+91">+91 (IN)</Option>
-//       <Option value="+1">+1 (US)</Option>
-//       <Option value="+44">+44 (UK)</Option>
-//       <Option value="+61">+61 (AUS)</Option>
-//       {/* Add more as needed */}
-//     </Select>
-//   </Form.Item>
-// );
-
 const Registration = () => {
+  const navigate = useNavigate();
+
   const onFinish = (values: any) => {
-    console.log("Success:", values)
-  }
+    console.log("Success:", values);
+    message.success("User created successfully!");
+    setTimeout(() => {
+      navigate("/");
+    }, 1500);
+  };
 
   return (
     <Row style={{ minHeight: "100vh" }}>
