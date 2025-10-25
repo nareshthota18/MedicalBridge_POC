@@ -4,7 +4,6 @@ import { Row, Col, Form, Input, Button, Typography, message } from "antd";
 import {
   SendOutlined,
 } from "@ant-design/icons";
-import real from "../../assets/real-time.svg";
 import AuthLayout from "./AuthLayout";
 
 const { Title, Text, Link } = Typography;

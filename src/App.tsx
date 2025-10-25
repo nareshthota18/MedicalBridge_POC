@@ -6,13 +6,13 @@ import AppRoutes from './AppRoutes'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-const AppLayout = ({ darkMode, toggleTheme }: { darkMode: boolean; toggleTheme: () => void }) => {
+const AppLayout = () => {
   const location = useLocation()
   const hideLayout = ['/', '/registration', '/forgot'].includes(location.pathname)
 
   return (
     <>
-      {!hideLayout && <Header darkMode={darkMode} toggleTheme={toggleTheme} />}
+      {!hideLayout && <Header />}
       <AppRoutes />
       {!hideLayout && <Footer />}
     </>
@@ -30,12 +30,6 @@ const App = () => {
     }
   }, [])
 
-  const toggleTheme = () => {
-    const newTheme = !darkMode
-    setDarkMode(newTheme)
-    localStorage.setItem('darkMode', String(newTheme)) // ✅ Save to localStorage
-  }
-
   return (
     <ConfigProvider
       theme={
@@ -45,7 +39,7 @@ const App = () => {
       }
     >
       <Router>
-        <AppLayout darkMode={darkMode} toggleTheme={toggleTheme} />
+        <AppLayout />
       </Router>
     </ConfigProvider>
   )

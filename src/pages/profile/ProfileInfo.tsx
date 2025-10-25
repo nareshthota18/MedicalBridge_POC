@@ -3,10 +3,6 @@ import { Card, Typography, Avatar, Row, Col, Divider, Space, Tag } from "antd";
 import {
   UserOutlined,
   CalendarOutlined,
-  MailOutlined,
-  PhoneOutlined,
-  HomeOutlined,
-  IdcardOutlined,
   CrownOutlined,
 } from "@ant-design/icons";
 

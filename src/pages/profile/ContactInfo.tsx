@@ -4,7 +4,6 @@ import {
   MailOutlined,
   PhoneOutlined,
   EnvironmentOutlined,
-  WhatsAppOutlined,
 } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
