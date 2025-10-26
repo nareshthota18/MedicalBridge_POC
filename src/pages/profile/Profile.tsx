@@ -31,9 +31,9 @@ const Profile: React.FC = () => {
             <Tabs.TabPane tab="Contact Info" key="2">
               <ContactInfo />
             </Tabs.TabPane>
-            <Tabs.TabPane tab="Booking" key="3">
+            {/* <Tabs.TabPane tab="Booking" key="3">
               <Booking />
-            </Tabs.TabPane>
+            </Tabs.TabPane> */}
             <Tabs.TabPane tab="Payments" key="4">
               <Payments />
             </Tabs.TabPane>
