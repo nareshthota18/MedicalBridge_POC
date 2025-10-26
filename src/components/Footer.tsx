@@ -11,7 +11,7 @@ const Footer = () => {
         color: '#fff',
       }}
     >
-      © {new Date().getFullYear()} Your Company Name. All Rights Reserved.
+     Medical Bridge © {new Date().getFullYear()} Developed by &nbsp;  <a href='https://www.tconnectservices.com/'>  T-Connect Consultancy & Service Private Limited. </a>
     </AntFooter>
   )
 }
