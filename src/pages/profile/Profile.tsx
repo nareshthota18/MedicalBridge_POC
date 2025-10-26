@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Tabs, Card, Breadcrumb } from "antd";
+import { Layout, Tabs, Card, Breadcrumb, Grid } from "antd";
 import ProfileInfo from "./ProfileInfo";
 import ContactInfo from "./ContactInfo";
 import Booking from "./Booking";
@@ -7,10 +7,13 @@ import Payments from "./Payments";
 import { Link } from "react-router-dom";
 
 const { Content } = Layout;
+const { useBreakpoint } = Grid;
 
 const Profile: React.FC = () => {
+  const screens = useBreakpoint();
+    const isMobile = !screens.md;
   return (
-    <Layout style={{ padding: 50, background: "#f0f2f5" }}>
+    <Layout style={{ padding: isMobile ? 24 : 50, background: "#f0f2f5" }}>
       <Content>
 
          {/* Breadcrumb */}

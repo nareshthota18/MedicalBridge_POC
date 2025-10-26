@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Layout, Steps, Modal, Row, Col, Card, Button, Breadcrumb } from "antd";
+import { Layout, Steps, Modal, Row, Col, Card, Button, Grid, Breadcrumb } from "antd";
 import Step1Health from "./Step1Health";
 import Step2Hospital from "./Step2Hospital";
 import Step3Doctor from "./Step3Doctor";
@@ -9,8 +9,11 @@ import { Link } from "react-router-dom";
 
 const { Content } = Layout;
 const { Step } = Steps;
+const { useBreakpoint } = Grid;
 
 const AdminDashboard = () => {
+  const screens = useBreakpoint();
+    const isMobile = !screens.md;
   const [currentStep, setCurrentStep] = useState(0);
 
   // Selections
@@ -76,7 +79,7 @@ const AdminDashboard = () => {
   ];
 
   return (
-    <Layout style={{ padding: 50, background: "#fff" }}>
+    <Layout style={{ padding: isMobile ? 24 : 50, background: "#fff" }}>
       <Content>
 
         {/* Breadcrumb */}
@@ -108,7 +111,7 @@ const AdminDashboard = () => {
 
           {/* Right column: Ads / Banner */}
           <Col xs={24} lg={4}>
-            <Card
+            {/* <Card
               style={{
                 textAlign: "center",
                 background: "#fafafa",
@@ -122,7 +125,7 @@ const AdminDashboard = () => {
               <Button type="primary" block href="/hotel">
                 Book Hotel
               </Button>
-            </Card>
+            </Card> */}
           </Col>
         </Row>
 

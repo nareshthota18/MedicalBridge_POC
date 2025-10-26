@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Layout, Steps, Row, Col, Card, Button, Breadcrumb } from "antd";
+import { Layout, Steps, Row, Col, Card, Button, Breadcrumb, Grid } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import StepHotel from "./StepHotel";
 import StepRoom from "./StepRoom";
@@ -8,8 +8,11 @@ import { Link } from "react-router-dom";
 
 const { Content } = Layout;
 const { Step } = Steps;
+const { useBreakpoint } = Grid;
 
 const HotelBookingDashboard: React.FC = () => {
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedHotel, setSelectedHotel] = useState<string | null>(null);
   const [selectedRoom, setSelectedRoom] = useState<string | null>(null);
@@ -26,7 +29,7 @@ const HotelBookingDashboard: React.FC = () => {
   };
 
   return (
-    <Layout style={{ padding: 50, background: "#f0f2f5" }}>
+    <Layout style={{ padding: isMobile? 24 : 50, background: "#f0f2f5" }}>
       <Content>
 
         {/* Breadcrumb */}

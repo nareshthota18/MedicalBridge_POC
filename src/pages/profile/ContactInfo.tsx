@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Typography, Row, Col, Divider } from "antd";
+import { Card, Typography, Row, Col, Divider, Grid } from "antd";
 import {
   MailOutlined,
   PhoneOutlined,
@@ -7,16 +7,19 @@ import {
 } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
+const { useBreakpoint } = Grid;
 
 const ContactInfo: React.FC = () => {
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
   return (
-    <Card style={{ padding: 24 }}>
+    <Card style={{ padding: isMobile ? 0 : 0 }} bodyStyle={isMobile ? { padding: 18 } : {}}>
       <Title level={4}>Contact Information</Title>
 
       <Row gutter={[16, 16]}>
         {/* Email */}
         <Col xs={24} sm={12}>
-          <Card hoverable style={{ padding: 16 }}>
+          <Card hoverable  bodyStyle={isMobile ? { padding: 16 } : {}}>
             <MailOutlined style={{ fontSize: 24, color: "#1890ff", marginRight: 12 }} />
             <Text strong>Primary Email:</Text>
             <br />
@@ -30,7 +33,7 @@ const ContactInfo: React.FC = () => {
 
         {/* Phone */}
         <Col xs={24} sm={12}>
-          <Card hoverable style={{ padding: 16 }}>
+          <Card hoverable bodyStyle={isMobile ? { padding: 16 } : {}}>
             <PhoneOutlined style={{ fontSize: 24, color: "#52c41a", marginRight: 12 }} />
             <Text strong>Mobile:</Text>
             <br />
@@ -44,7 +47,7 @@ const ContactInfo: React.FC = () => {
 
         {/* Address */}
         <Col xs={24}>
-          <Card hoverable style={{ padding: 16 }}>
+          <Card hoverable bodyStyle={isMobile ? { padding: 16 } : {}}>
             <EnvironmentOutlined style={{ fontSize: 24, color: "#fa8c16", marginRight: 12 }} />
             <Text strong>Address:</Text>
             <br />

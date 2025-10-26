@@ -1,5 +1,5 @@
 import React, { useEffect, useState, ReactNode } from 'react';
-import { Row, Col, Card, Typography, Statistic, Progress, Button } from 'antd';
+import { Row, Col, Card, Typography, Statistic, Grid, Button } from 'antd';
 import {
   HomeOutlined,
   MedicineBoxOutlined,
@@ -14,8 +14,11 @@ import {
 } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
+const { useBreakpoint } = Grid;
 
 const Dashboard = () => {
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
   const [currentTime, setCurrentTime] = useState<Date>(new Date());
 
   const userStats = {
@@ -56,7 +59,7 @@ const Dashboard = () => {
   const valueStyle: React.CSSProperties = { fontWeight: '500' };
 
   return (
-    <div style={{ padding: 50, background: '#f7f8fa' }}>
+    <div style={{ padding: isMobile ? 24 : 50, background: '#f7f8fa' }}>
       {/* Header */}
       <Row justify="space-between" align="middle" style={{ marginBottom: 24 }}>
         <Col>
@@ -70,7 +73,7 @@ const Dashboard = () => {
       {/* Main Stats + Action */}
       <Row gutter={[24, 24]}>
         {/* Left Side - Stats */}
-        <Col span={18}>
+        <Col xs={24} sm={24} md={18}>
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={12} md={8}>
               <Card 
@@ -114,7 +117,7 @@ const Dashboard = () => {
                 hoverable
               >
                 <Statistic
-                  title={titleWithIcon(<CalendarOutlined style={{ color: '#fa8c16' }} />, "Upcoming Bookings")}
+                  title={titleWithIcon(<CalendarOutlined style={{ color: '#fa8c16' }} />, "Upcoming Appointments")}
                   value={userStats.upcomingBookings}
                   valueStyle={valueStyle}
                 />
@@ -172,8 +175,8 @@ const Dashboard = () => {
         </Col>
 
         {/* Right Side - Action Cards */}
-        <Col span={6}>
-          <Card
+        <Col xs={24} sm={24} md={6}>
+          {/* <Card
             hoverable
             style={{
               background: actionBg,
@@ -190,7 +193,7 @@ const Dashboard = () => {
             <Button type="primary" block href="/hotel">
               Book Now
             </Button>
-          </Card>
+          </Card> */}
 
           <Card
             hoverable

@@ -1,8 +1,9 @@
 import React from "react";
-import { Table, Card, Typography } from "antd";
+import { Table, Card, Typography, Grid } from "antd";
 import { HomeOutlined, CalendarOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
+const { useBreakpoint } = Grid;
 
 const bookingsData = [
   { key: 1, hotel: "Grand Palace", room: "Single Room", date: "2025-10-27" },
@@ -16,8 +17,10 @@ const bookingsColumns = [
 ];
 
 const Booking: React.FC = () => {
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
   return (
-    <Card style={{ padding: 24 }}>
+    <Card style={{ padding: isMobile ? 0 : 0 }} bodyStyle={isMobile ? { padding: 18 } : {}}>
       <Title level={4}>Your Bookings</Title>
       <Table dataSource={bookingsData} columns={bookingsColumns} pagination={false} bordered />
     </Card>
